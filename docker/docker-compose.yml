@@ -1,0 +1,12 @@
+version: '2'
+services:
+  mongodb:
+    container_name: mongo
+    image: mongo
+    # mem_limit: 512M
+    ports:
+      - "127.0.0.1:27017:27017"
+    command: mongod --noprealloc --smallfiles --dbpath /data/db --nojournal --oplogSize 16 --noauth
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/data/db
